@@ -2,7 +2,7 @@
 
 ## Dependencies
 You can configure softwares in PLAINS/configure or add them to $PATH
-###1.Assembling, placing and calling presence/absence of novel contigs
+### 1.Assembling, placing and calling presence/absence of novel contigs
 1. Python3
 2. Perl
 3. BWA
@@ -39,7 +39,7 @@ cd RepeatMasker
 ```
 More complete help about installing RepeatMasker and supplementing the main RepeatMasker library in http://www.repeatmasker.org/RepeatMasker/
 
-###2.Analysing functional effects of placed contigs
+### 2.Analysing functional effects of placed contigs
 1. Python
 2. Perl
 3. R 4.0+ (packages: 1.optparse 2.clusterProfiler)
@@ -56,7 +56,7 @@ source ~/.bashrc
 ```
 
 ## Running
-###1.Assembling, placing and calling presence/absence of novel contigs
+### 1.Assembling, placing and calling presence/absence of novel contigs
 ```bash
 bin/plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 ```
@@ -68,7 +68,7 @@ bin/plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 		-s: Species for Repeatmasker [Default plants]
 		-o: Output dir [Default out]
 
-###2.Analysing functional effects of placed contigs
+### 2.Analysing functional effects of placed contigs
 ```bash
 bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p out
 ```
@@ -81,13 +81,13 @@ bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p out
 		-p: PLAINS output dir [Default out]
 
 ## Output files
-###1.Assembling, placing and calling presence/absence of novel contigs
+### 1.Assembling, placing and calling presence/absence of novel contigs
 1. placed_contig.fasta:&emsp;Placed contig sequences (Long insertions)  
 2. placed_loci.txt:&emsp;Locations of placed contigs  
 3. placed_contig_gt.txt:&emsp;Presence/absence of placed contigs  
 4. unplaced_contig.fasta:&emsp;Unplaced contig sequences  
-5. unplaced_contig_gt.txt:&emsp;Presence/absence of unplaced contigs  
-###2.Analysing functional effects of placed contigs
+5. unplaced_contig_gt.txt:&emsp;Presence/absence of unplaced contigs
+### 2.Analysing functional effects of placed contigs
 1. placed_contig.gff:&emsp;GFF file of genes in placed contigs
 2. placed_gff_gene.txt:&emsp;Genes in placed contigs
 3. ins_gene.txt:&emsp;Genes whose bodies were inserted
