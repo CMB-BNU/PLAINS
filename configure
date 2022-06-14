@@ -1,0 +1,10 @@
+BWA bwa	#path to BWA
+SAMtools samtools	#path to SAMtools
+BEDtools bedtools	#path to BEDtools
+Centrifuge centrifuge	#path to Centrifuge
+centrifuge_kreport centrifuge-kreport	#path to centrifuge_kreport (in Centrifuge)
+RepeatMasker RepeatMasker	#path to RepeatMasker
+MaSuRCA masurca	#path to MaSuRCA
+NUCmer nucmer	#path to NUCmer
+show_coords show-coords	#path to show-coords (in NUCmer)
+gemoma	GeMoMa	#path to gemoma
