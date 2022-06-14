@@ -15,14 +15,14 @@ You can configure softwares in PLAINS/configure or add them to $PATH
 
 You can use conda to create a new environment and install Python3, Perl, BWA, SAMtools, BEDtools, MaSuRCA and MUMmer
 
-Install Centrifuge:
+**Install Centrifuge:**
 ```bash
 git clone https://github.com/infphilo/centrifuge
 cd centrifuge
 make
 make install prefix=/path/to/install
 ```
-Download Centrifuge database
+**Download Centrifuge database:**
 ```bash
 axel https://zenodo.org/record/3732127/files/h+p+v+c.tar.gz?download=1
 ```
@@ -30,7 +30,7 @@ Then unzip the database and move it to PLAINS/bin/
 
 More complete help about installing Centrifuge in http://www.ccb.jhu.edu/software/centrifuge/manual.shtml
 
-Install RepeatMasker
+**Install RepeatMasker:**
 ```bash
 wget http://www.repeatmasker.org/RepeatMasker/RepeatMasker-4.1.2-p1.tar.gz
 tar -xzvf RepeatMasker-4.1.2-p1.tar.gz
@@ -45,12 +45,13 @@ More complete help about installing RepeatMasker and supplementing the main Repe
 3. R 4.0+ (packages: 1.optparse 2.clusterProfiler)
 4. GeMoMa
 
-You can use conda to install Python Perl R and GeMoMa, then install required R packages
-Install optparse
+You can use conda to install Python, Perl, R and GeMoMa, then install required R packages
+
+**Install optparse:**
 ```R
 install.packages("optparse")
 ```
-Install clusterProfiler
+**Install clusterProfiler:**
 ```R
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
