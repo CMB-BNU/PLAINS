@@ -91,6 +91,19 @@ bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p out
 		-a: GO annotation file
 		-p: PLAINS output dir [Default out]
 
+
+Example of GO annotation file:
+
+	JMA000003.1     GO:0009507  
+	JMA000003.1     GO:0000287  
+	JMA000003.1     GO:0004497  
+	JMA000003.1     GO:0016984  
+	JMA000003.1     GO:0009853  
+	JMA000003.1     GO:0019253  
+	JMA000010.1     GO:0051513  
+	JMA000011.1     GO:0003676  
+
+
 ## Output files
 ### 1. Assembling, placing and calling presence/absence of novel contigs
 1. placed_contig.fasta:&emsp;Placed contig sequences (Long insertions)  
