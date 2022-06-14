@@ -91,6 +91,16 @@ bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p out
 		-a: GO annotation file
 		-p: PLAINS output dir [Default out]
 
+Example of GFF file: 
+
+	QKZY01000017    EVM     gene    2291    2806    .       +       .       ID=JMA008113;Name=JMA008113.1
+	QKZY01000017    EVM     mRNA    2291    2806    .       +       .       ID=JMA008113.1;Parent=JMA008113;Name=JMA008113.
+	QKZY01000017    EVM     exon    2291    2806    .       +       .       ID=JMA008113.1.exon1;Parent=JMA008113.1
+	QKZY01000017    EVM     CDS     2291    2806    .       +       0       ID=cds.JMA008113.1;Parent=JMA008113.1
+	QKZY01000017    EVM     gene    7013    8226    .       -       .       ID=JMA008110;Name=JMA008110.1
+	QKZY01000017    EVM     mRNA    7013    8226    .       -       .       ID=JMA008110.1;Parent=JMA008110;Name=JMA008110.
+	QKZY01000017    EVM     exon    8175    8226    .       -       .       ID=JMA008110.1.exon1;Parent=JMA008110.1
+	QKZY01000017    EVM     CDS     8175    8226    .       -       0       ID=cds.JMA008110.1;Parent=JMA008110.1
 
 Example of GO annotation file:
 
@@ -102,7 +112,6 @@ Example of GO annotation file:
 	JMA000003.1     GO:0019253  
 	JMA000010.1     GO:0051513  
 	JMA000011.1     GO:0003676  
-
 
 ## Output files
 ### 1. Assembling, placing and calling presence/absence of novel contigs
