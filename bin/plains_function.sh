@@ -15,20 +15,22 @@ done<$scriptpath/../configure
 
 #parameters
 Usage (){
-	echo -e "\n\t\tUsage: bin/plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p]\n"
+	echo -e "\n\t\tUsage: bin/plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]\n"
 	echo -e "\t\t\t-h: Show this help"
 	echo -e "\t\t\t-t: Number of threads [Default 8]"
 	echo -e "\t\t\t-r: Reference genome"
 	echo -e "\t\t\t-g: GFF file"
 	echo -e "\t\t\t-a: GO annotation file"
-	echo -e "\t\t\t-p: PLAINS output dir [Default out]\n"
+	echo -e "\t\t\t-p: Population or species information file [If provided, PLAINS will analyze unique and shared insertions]"
+	echo -e "\t\t\t-o: PLAINS output dir [Default out]\n"
 }
 
 np=8
 plains_dir=`pwd`"/out"
 workpath=`pwd`"/plains_work"
+pop=""
 #scriptpath=`pwd`"/"`dirname $0`
-while getopts ht:r:g:a:p: varname
+while getopts ht:r:g:a:p:o: varname
 do
 	case $varname in
 	h)
@@ -58,7 +60,7 @@ do
 			exit
 		fi
 		;;
-	p)
+	o)
 		plains_dir=$OPTARG
 		if [ ${plains_dir:0:1} != "/"  ]; then
 			plains_dir=`pwd`"/"$plains_dir
@@ -77,6 +79,9 @@ do
 			echo "GO annotation file $go_anno not exist"
 			exit
 		fi
+		;;
+	p)
+		pop=$OPTARG
 		;;
 	esac
 done
@@ -118,10 +123,27 @@ fi
 if [ ! -d ${plains_dir}/go ]; then
 	mkdir ${plains_dir}/go
 fi
-Rscript ${scriptpath}/go_enrich.R -a $go_anno -c ${scriptpath}/go_class.txt -q 1 -g ${plains_dir}/ins_gene.txt -o ${plains_dir}/go/gene_body_inserted
-Rscript ${scriptpath}/go_enrich.R -a $go_anno -c ${scriptpath}/go_class.txt -q 1 -g ${plains_dir}/upstream_gene.txt -o ${plains_dir}/go/gene_upstream_inserted
-Rscript ${scriptpath}/go_enrich.R -a $go_anno -c ${scriptpath}/go_class.txt -q 1 -g ${plains_dir}/placed_gff_gene.txt -o ${plains_dir}/go/placed_anno_gene
+Rscript ${scriptpath}/go_enrich.R -a $go_anno -c ${scriptpath}/go_class.txt -q 1 -g ${plains_dir}/ins_gene.txt -o ${plains_dir}/go/gene_body_inserted 1>>$workpath/log/go.log 2>>$workpath/log/go.log
+Rscript ${scriptpath}/go_enrich.R -a $go_anno -c ${scriptpath}/go_class.txt -q 1 -g ${plains_dir}/upstream_gene.txt -o ${plains_dir}/go/gene_upstream_inserted 1>>$workpath/log/go.log 2>>$workpath/log/go.log
+Rscript ${scriptpath}/go_enrich.R -a $go_anno -c ${scriptpath}/go_class.txt -q 1 -g ${plains_dir}/placed_gff_gene.txt -o ${plains_dir}/go/placed_anno_gene 1>>$workpath/log/go.log 2>>$workpath/log/go.log
 
+#pop
+if [ -f $pop ]; then
+	if [ ! -d ${plains_dir}/pop ]; then
+		mkdir ${plains_dir}/pop
+	fi
+	if [ ! -d ${plains_dir}/pop/gene ]; then
+		mkdir ${plains_dir}/pop/gene
+	fi
+	if [ ! -d ${plains_dir}/pop/go ]; then
+		mkdir ${plains_dir}/pop/go
+	fi
+	python ${scriptpath}/pop_stat.py $pop ${plains_dir}/placed_contig_gt.txt ${workpath}/ins_gene_body.txt ${workpath}/ins_gene_upstream.txt ${plains_dir}/placed_contig.gff ${plains_dir}/pop/pop_stat.txt ${plains_dir}/pop/gene/placed
+	for genefile in `ls ${plains_dir}/pop/gene/`
+	do
+		Rscript ${scriptpath}/go_enrich.R -a $go_anno -c ${scriptpath}/go_class.txt -q 1 -g ${plains_dir}/pop/gene/${genefile} -o ${plains_dir}/pop/go/${genefile} 1>>$workpath/log/go.log 2>>$workpath/log/go.log
+	done
+fi
 end_time=`date +%Y%m%d-%H:%M`
 echo "Complete functional effects analysis: $start_time -------> $end_time"
 echo "Output files in $plains_dir"

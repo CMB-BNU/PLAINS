@@ -83,13 +83,14 @@ bin/plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 ```bash
 bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p out
 ```
-	Usage: bin/plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p]
+	Usage: bin/plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]
 		-h: Show this help
 		-t: Number of threads [Default 8]
 		-r: Reference genome
 		-g: GFF file
 		-a: GO annotation file
-		-p: PLAINS output dir [Default out]
+		-p: Population or species information file [If provided, PLAINS will analyze unique and shared insertions]
+		-o: PLAINS output dir [Default out]
 
 Example of GFF file: 
 
@@ -113,6 +114,11 @@ Example of GO annotation file:
 	JMA000010.1     GO:0051513  
 	JMA000011.1     GO:0003676  
 
+Example of Population or species information file (Separated by tab):
+	Jai-Amori.pcr.bam	pop1
+	Jai-ADM1.pcr.bam	pop2
+if this file was provided, PLAINS will try to find unique insertions for each population or species and insertions shared among all populations or species and analyze there functional effects.
+
 ## Output files
 ### 1. Assembling, placing and calling presence/absence of novel contigs
 1. placed_contig.fasta:&emsp;Placed contig sequences (Long insertions)  
@@ -126,5 +132,6 @@ Example of GO annotation file:
 3. ins_gene.txt:&emsp;Genes whose bodies were inserted
 4. upstream_gene.txt:&emsp;Genes whose 5kb upstream were inserted
 5. go:&emsp;Directory contains GO enrichment results
+6. pop:&emsp;Directory contains results of functional effects analysis for unique and shared insertions
 ## Citation
 Please cite:
