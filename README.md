@@ -115,8 +115,10 @@ Example of GO annotation file:
 	JMA000011.1     GO:0003676  
 
 Example of Population or species information file (Separated by tab):
+
 	Jai-Amori.pcr.bam	pop1
 	Jai-ADM1.pcr.bam	pop2
+
 if this file was provided, PLAINS will try to find unique insertions for each population or species and insertions shared among all populations or species and analyze there functional effects.
 
 ## Output files
