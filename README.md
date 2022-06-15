@@ -89,7 +89,7 @@ bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p out
 		-r: Reference genome
 		-g: GFF file
 		-a: GO annotation file
-		-p: Population or species information file [If provided, PLAINS will analyze unique and shared insertions]
+		-p: Population or species information file [Optional, if provided, PLAINS will analyze unique and shared insertions]
 		-o: PLAINS output dir [Default out]
 
 Example of GFF file: 
@@ -119,7 +119,7 @@ Example of Population or species information file (Separated by tab):
 	Jai-Amori.pcr.bam	pop1
 	Jai-ADM1.pcr.bam	pop2
 
-if this file was provided, PLAINS will try to find unique insertions for each population or species and insertions shared among all populations or species and analyze there functional effects.
+If this file was provided, PLAINS will try to find unique insertions for each population or species and insertions shared among all populations or species and analyze there functional effects.
 
 ## Output files
 ### 1. Assembling, placing and calling presence/absence of novel contigs

@@ -21,7 +21,7 @@ Usage (){
 	echo -e "\t\t\t-r: Reference genome"
 	echo -e "\t\t\t-g: GFF file"
 	echo -e "\t\t\t-a: GO annotation file"
-	echo -e "\t\t\t-p: Population or species information file [If provided, PLAINS will analyze unique and shared insertions]"
+	echo -e "\t\t\t-p: Population or species information file [Optional, if provided, PLAINS will analyze unique and shared insertions]"
 	echo -e "\t\t\t-o: PLAINS output dir [Default out]\n"
 }
 
