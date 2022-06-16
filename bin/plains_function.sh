@@ -16,13 +16,13 @@ done<$scriptpath/../configure
 #parameters
 Usage (){
 	echo -e "\n\t\tUsage: bin/plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]\n"
-	echo -e "\t\t\t-h: Show this help"
+	echo -e "\t\t\t-h: Print help message"
 	echo -e "\t\t\t-t: Number of threads [Default 8]"
 	echo -e "\t\t\t-r: Reference genome"
 	echo -e "\t\t\t-g: GFF file"
 	echo -e "\t\t\t-a: GO annotation file"
 	echo -e "\t\t\t-p: Population or species information file [Optional, if provided, PLAINS will analyze unique and shared insertions]"
-	echo -e "\t\t\t-o: PLAINS output dir [Default out]\n"
+	echo -e "\t\t\t-o: output dir of plains.sh [Default out]\n"
 }
 
 np=8

@@ -3,8 +3,8 @@
 ## Dependencies
 You can configure softwares in PLAINS/configure or add them to $PATH
 ### 1. Assembling, placing and calling presence/absence of novel contigs
-1. Python3
-2. Perl
+1. Python 3+
+2. Perl 5.8.0+
 3. BWA
 4. SAMtools
 5. BEDtools
@@ -13,7 +13,7 @@ You can configure softwares in PLAINS/configure or add them to $PATH
 8. MaSuRCA
 9. MUMmer 
 
-You can use conda to create a new environment and install Python3, Perl, BWA, SAMtools, BEDtools, MaSuRCA and MUMmer
+You can use conda to create a new environment and install Python 3+, Perl 5.8.0+, BWA, SAMtools, BEDtools, MaSuRCA and MUMmer
 
 **Install Centrifuge:**
 ```bash
@@ -24,7 +24,7 @@ make install prefix=/path/to/install
 ```
 **Download Centrifuge database:**
 ```bash
-axel https://zenodo.org/record/3732127/files/h+p+v+c.tar.gz?download=1
+wget https://zenodo.org/record/3732127/files/h+p+v+c.tar.gz?download=1
 ```
 Then unzip the database and move it to PLAINS/bin/
 
@@ -32,12 +32,17 @@ More complete help about installing Centrifuge in http://www.ccb.jhu.edu/softwar
 
 **Install RepeatMasker:**
 ```bash
+##download prerequisites
+conda install h5py
+conda install TRF
+conda install RMBlast
+##install RepeatMasker
 wget http://www.repeatmasker.org/RepeatMasker/RepeatMasker-4.1.2-p1.tar.gz
 tar -xzvf RepeatMasker-4.1.2-p1.tar.gz
 cd RepeatMasker
 ./configure
 ```
-More complete help about installing RepeatMasker and supplementing the main RepeatMasker library in http://www.repeatmasker.org/RepeatMasker/
+More complete help about prerequisites, RepeatMasker installation and the main RepeatMasker library supplementary in http://www.repeatmasker.org/RepeatMasker/
 
 ### 2. Analysing functional effects of placed contigs
 1. Python
@@ -45,7 +50,7 @@ More complete help about installing RepeatMasker and supplementing the main Repe
 3. R 4.0+ (packages: 1.optparse 2.clusterProfiler)
 4. GeMoMa
 
-You can use conda to install Python, Perl, R and GeMoMa, then install required R packages
+You can use conda to install Python, Perl, R 4.0+ and GeMoMa, then install required R packages
 
 **Install optparse:**
 ```R
@@ -68,30 +73,32 @@ source ~/.bashrc
 
 ## Running
 ### 1. Assembling, placing and calling presence/absence of novel contigs
-```bash
-bin/plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
-```
 	Usage: bash plains.sh [-h] [-t] [-r] [-b] [-s] [-o]
-		-h: Show this help
+		-h: Print help message
 		-t: Number of threads [Default 8]
 		-r: Reference genome, needs to be indexed by bwa and samtools
 		-b: Dir only contains your bam files
-		-s: Species for Repeatmasker [Default plants]
+		-s: Species for Repeatmasker [For example: human, mouse, mammal, "ciona savignyi", Default plants]
 		-o: Output dir [Default out]
 
-### 2. Analysing functional effects of placed contigs
+**Example:**
 ```bash
-bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p out
+bin/plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 ```
+### 2. Analysing functional effects of placed contigs
 	Usage: bin/plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]
-		-h: Show this help
+		-h: Print help message
 		-t: Number of threads [Default 8]
 		-r: Reference genome
 		-g: GFF file
 		-a: GO annotation file
 		-p: Population or species information file [Optional, if provided, PLAINS will analyze unique and shared insertions]
-		-o: PLAINS output dir [Default out]
+		-o: Output dir of plains.sh [Default out]
 
+**Example:**
+```bash
+bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p pop_info -o out
+```
 Example of GFF file: 
 
 	QKZY01000017    EVM     gene    2291    2806    .       +       .       ID=JMA008113;Name=JMA008113.1
@@ -116,8 +123,10 @@ Example of GO annotation file:
 
 Example of Population or species information file (Separated by tab):
 
-	Jai-Amori.pcr.bam	pop1
-	Jai-ADM1.pcr.bam	pop2
+	test1.bam	pop1
+	test2.bam	pop1
+	test3.bam	pop2
+	test4.bam	pop2
 
 If this file was provided, PLAINS will try to find unique insertions for each population or species and insertions shared among all populations or species and analyze there functional effects.
 

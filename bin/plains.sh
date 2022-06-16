@@ -51,11 +51,11 @@ done<$scriptpath/../configure
 #parameters
 Usage (){
 	echo -e "\n\t\tUsage:  bin/plains.sh [-h] [-t] [-r] [-b] [-s] [-o]\n"
-	echo -e "\t\t\t-h: Show this help"
+	echo -e "\t\t\t-h: Print help message"
 	echo -e "\t\t\t-t: Number of threads [Default 8]"
 	echo -e "\t\t\t-r: Reference genome, needs to be indexed by bwa and samtools"
 	echo -e "\t\t\t-b: Dir only contains your bam files"
-	echo -e "\t\t\t-s: Species for Repeatmasker [Default plants]"
+	echo -e "\t\t\t-s: Species for Repeatmasker [For example: human, mouse, mammal, "ciona savignyi", Default plants]"
 	echo -e "\t\t\t-o: Output dir [Default out]\n"
 	exit 1
 }
