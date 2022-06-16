@@ -73,7 +73,7 @@ source ~/.bashrc
 
 ## Running
 ### 1. Assembling, placing and calling presence/absence of novel contigs
-	Usage: bash plains.sh [-h] [-t] [-r] [-b] [-s] [-o]
+	Usage: bin/plains.sh [-h] [-t] [-r] [-b] [-s] [-o]
 		-h: Print help message
 		-t: Number of threads [Default 8]
 		-r: Reference genome, needs to be indexed by bwa and samtools
