@@ -55,7 +55,7 @@ Usage (){
 	echo -e "\t\t\t-t: Number of threads [Default 8]"
 	echo -e "\t\t\t-r: Reference genome, needs to be indexed by bwa and samtools"
 	echo -e "\t\t\t-b: Dir only contains your bam files"
-	echo -e "\t\t\t-s: Species for Repeatmasker [For example: human, mouse, mammal, "ciona savignyi", Default plants]"
+	echo -e "\t\t\t-s: Species for Repeatmasker [The species name must be a valid NCBI Taxonomy Database species name and be contained in the RepeatMasker repeat database. For example: human, mouse, mammal, "ciona savignyi", Default plants]"
 	echo -e "\t\t\t-o: Output dir [Default out]\n"
 	exit 1
 }

@@ -78,7 +78,7 @@ source ~/.bashrc
 		-t: Number of threads [Default 8]
 		-r: Reference genome, needs to be indexed by bwa and samtools
 		-b: Dir only contains your bam files
-		-s: Species for Repeatmasker [For example: human, mouse, mammal, "ciona savignyi", Default plants]
+		-s: Species for Repeatmasker [The species name must be a valid NCBI Taxonomy Database species name and be contained in the RepeatMasker repeat database. For example: human, mouse, mammal, "ciona savignyi", Default plants]
 		-o: Output dir [Default out]
 
 **Example:**
