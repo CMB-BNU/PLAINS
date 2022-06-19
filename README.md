@@ -74,7 +74,7 @@ source ~/.bashrc
 
 ## Running
 ### 1. Assembling, placing and calling presence/absence of novel contigs
-	Usage: bin/plains.sh [-h] [-t] [-r] [-b] [-s] [-o]
+	Usage: plains.sh [-h] [-t] [-r] [-b] [-s] [-o]
 		-h: Print help message
 		-t: Number of threads [Default 8]
 		-r: Reference genome, needs to be indexed by bwa and samtools
@@ -87,7 +87,7 @@ source ~/.bashrc
 bin/plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 ```
 ### 2. Analysing functional effects of placed contigs
-	Usage: bin/plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]
+	Usage: plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]
 		-h: Print help message
 		-t: Number of threads [Default 8]
 		-r: Reference genome
