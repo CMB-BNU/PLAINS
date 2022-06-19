@@ -168,6 +168,7 @@ fi
 
 while read line
 do
+	mkdir $workpath/masurca_work
 	cd $workpath/masurca_work
 	$masurca $workpath/masurca_config/${line}.config 1>>$workpath/log/${line}.masurca.log 2>>$workpath/log/${line}.masurca.log
 	bash assemble.sh 1>>$workpath/log/${line}.masurca.log 2>>$workpath/log/${line}.masurca.log
@@ -176,8 +177,9 @@ do
 	elif [ -f CA/primary.genome.scf.fasta ]; then
 		mv CA/primary.genome.scf.fasta $workpath/unfilter_fa/${line}.scf.fasta
 	fi
-	rm -rf *
+#	rm -rf *
 	cd ..
+	rm -rf $workpath/masurca_work
 	perl $scriptpath/fil_fasta.pl $workpath/unfilter_fa/${line}.scf.fasta $workpath/filter_fa/${line}.over1kb.fasta
 done<$list
 
@@ -200,7 +202,7 @@ do
 	$centrifuge --report-file $workpath/centrifuge_result/${line}.csv -x hpvc -k 1 --host-taxids 9606 -f $workpath/filter_fa/${line}.over1kb.fasta >$workpath/centrifuge_result/${line}.txt 2>>$workpath/log/${line}.centrifuge.log
 	$centrifuge_kreport -x hpvc $workpath/centrifuge_result/${line}.txt --min-score 0 --min-length 0 > $workpath/centrifuge_result/${line}.krakenOut 2>>$workpath/log/${line}.centrifuge.log
 	perl $scriptpath/fil_centrifuge.pl $workpath/filter_fa/${line}.over1kb.fasta $workpath/centrifuge_result/${line}.txt $workpath/fil_centrifuge/${line}.fasta
-	$repeatmasker -species $species -nolow $workpath/fil_centrifuge/${line}.fasta 2>>$workpath/log/${line}.repeatmasker.log
+	$repeatmasker -species $species -nolow $workpath/fil_centrifuge/${line}.fasta 1>>$workpath/log/${line}.repeatmasker.log 2>>$workpath/log/${line}.repeatmasker.log
 	if [ -f $workpath/fil_centrifuge/${line}.fasta.masked ]; then
 		perl $scriptpath/write_fasta.pl $workpath/fil_centrifuge/${line}.fasta.masked $workpath/masked_fa/${line}.masked.fasta
 	else

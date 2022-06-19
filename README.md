@@ -6,14 +6,14 @@ You can configure softwares in PLAINS/configure or add them to $PATH
 1. Python 3+
 2. Perl 5.8.0+
 3. BWA
-4. SAMtools
+4. SAMtools 1.3+
 5. BEDtools
 6. Centrifuge
 7. RepeatMasker 
-8. MaSuRCA
+8. MaSuRCA 4+
 9. MUMmer 
 
-You can use conda to create a new environment and install Python 3+, Perl 5.8.0+, BWA, SAMtools, BEDtools, MaSuRCA and MUMmer
+You can use conda to create a new environment and install Python, Perl, BWA, SAMtools, BEDtools, MaSuRCA and MUMmer
 
 **Install Centrifuge:**
 ```bash
