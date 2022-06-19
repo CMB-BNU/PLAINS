@@ -67,7 +67,8 @@ BiocManager::install("clusterProfiler")
 
 ```bash
 git clone https://github.com/CMB-BNU/PLAINS.git
-echo "export PATH=\$PATH:PLAINS/bin" >> ~/.bashrc
+echo "alias plains.sh=Path_to_PLAINS/PLAINS/bin/plains.sh" >> ~/.bashrc
+echo "alias plains_function.sh=Path_to_PLAINS/PLAINS/bin/plains_function.sh" >> ~/.bashrc
 source ~/.bashrc
 ```
 

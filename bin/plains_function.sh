@@ -1,6 +1,12 @@
 #!/bin/bash
 
-scriptpath=`pwd`"/"`dirname $0`
+dir=`dirname $0`
+if [ ${dir:0:1} != "/"  ]; then
+	scriptpath=`pwd`"/"`dirname $0`
+else
+	scriptpath=`dirname $0`
+fi
+echo "PLAINS scripts in: $scriptpath"
 #softwares
 #gemoma="GeMoMa"
 while read line
@@ -12,6 +18,7 @@ do
 		;;
 	esac
 done<$scriptpath/../configure
+echo "configure file in: $scriptpath/../configure"
 
 #parameters
 Usage (){

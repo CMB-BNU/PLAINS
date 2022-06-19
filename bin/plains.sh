@@ -42,6 +42,7 @@ do
 		;;
 	esac
 done<$scriptpath/../configure
+echo "configure file in: $scriptpath/../configure"
 
 #bwa=bwa
 #samtools=samtools
