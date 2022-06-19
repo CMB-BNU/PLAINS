@@ -84,7 +84,7 @@ source ~/.bashrc
 
 **Example:**
 ```bash
-bin/plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
+plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 ```
 ### 2. Analysing functional effects of placed contigs
 	Usage: plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]
@@ -98,7 +98,7 @@ bin/plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 
 **Example:**
 ```bash
-bin/plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p pop_info -o out
+plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p pop_info -o out
 ```
 Example of GFF file: 
 
