@@ -1,8 +1,13 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #softwares
-
-scriptpath=`pwd`"/"`dirname $0`
+dir=`dirname $0`
+if [ ${dir:0:1} != "/"  ]; then
+	scriptpath=`pwd`"/"`dirname $0`
+else
+	scriptpath=`dirname $0`
+fi
+echo "PLAINS scripts in: $scriptpath"
 
 while read line
 do
