@@ -89,6 +89,13 @@ do
 		;;
 	p)
 		pop=$OPTARG
+		if [ ${pop:0:1} != "/"  ]; then
+			 pop=`pwd`"/"$pop
+		fi
+		if [ ! -f $pop ]; then
+			echo "$pop not exist"
+			exit
+		fi
 		;;
 	esac
 done
