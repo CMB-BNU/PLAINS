@@ -99,7 +99,7 @@ plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 
 **Example:**
 ```bash
-plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -p pop_info -o out
+plains_function.sh -t 8 -r reference.fa -g ref.gff -a go_anno.txt -u 5000 -p pop_info -o out
 ```
 Example of GFF file: 
 
