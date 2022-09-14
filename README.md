@@ -87,12 +87,13 @@ source ~/.bashrc
 plains.sh -t 8 -r reference.fa -b bamdir -s plants -o out
 ```
 ### 2. Analysing functional effects of placed contigs
-	Usage: plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]
+	Usage: plains_function.sh [-h] [-t] [-r] [-g] [-a] [-u] [-p] [-o]
 		-h: Print help message
 		-t: Number of threads [Default 8]
 		-r: Reference genome
 		-g: GFF file
 		-a: GO annotation file
+		-u: Length of upstream [Default 5000]
 		-p: Population or species information file [Optional, if provided, PLAINS will analyze unique and shared insertions]
 		-o: Output dir of plains.sh [Default out]
 

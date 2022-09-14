@@ -3,7 +3,8 @@
 $bed=$ARGV[0];
 #$gff="/data/home/chenyd/reference/JMA_sort.gff";
 $gff=$ARGV[1];
-$out=$ARGV[2];
+$upstream=$ARGV[2];
+$out=$ARGV[3];
 open(BED,"$bed") or die "can't open $bed,$!";
 open(GFF,"$gff") or die "can't open $gff,$!";
 open(OUT,">$out") or die "can't write $out,$!";
@@ -28,7 +29,7 @@ while(<BED>){
 			if ($lines[2] eq "gene"){
 				$begin2=$lines[3];
 				$end2=$lines[4];
-				if($begin<=$begin2-5000 or $begin>=$begin2){
+				if($begin<=$begin2-$upstream or $begin>=$begin2){
 					next;
 				}else{
 					$lines[8]=~ /Name=(.*?)\n/;

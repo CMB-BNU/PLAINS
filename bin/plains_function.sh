@@ -22,22 +22,24 @@ echo "configure file in: $scriptpath/../configure"
 
 #parameters
 Usage (){
-	echo -e "\n\t\tUsage: bin/plains_function.sh [-h] [-t] [-r] [-g] [-a] [-p] [-o]\n"
+	echo -e "\n\t\tUsage: plains_function.sh [-h] [-t] [-r] [-g] [-a] [-u] [-p] [-o]\n"
 	echo -e "\t\t\t-h: Print help message"
 	echo -e "\t\t\t-t: Number of threads [Default 8]"
 	echo -e "\t\t\t-r: Reference genome"
 	echo -e "\t\t\t-g: GFF file"
 	echo -e "\t\t\t-a: GO annotation file"
+	echo -e "\t\t\t-u: Length of upstream [Default 5000]"
 	echo -e "\t\t\t-p: Population or species information file [Optional, if provided, PLAINS will analyze unique and shared insertions]"
 	echo -e "\t\t\t-o: output dir of plains.sh [Default out]\n"
 }
 
+upstream_len=5000
 np=8
 plains_dir=`pwd`"/out"
 workpath=`pwd`"/plains_work"
 pop=""
 #scriptpath=`pwd`"/"`dirname $0`
-while getopts ht:r:g:a:p:o: varname
+while getopts ht:r:g:a:p:u:o: varname
 do
 	case $varname in
 	h)
@@ -87,6 +89,9 @@ do
 			exit
 		fi
 		;;
+	u)
+		upstream_len=$OPTARG
+		;;
 	p)
 		pop=$OPTARG
 		if [ ${pop:0:1} != "/"  ]; then
@@ -115,7 +120,7 @@ echo "--output dir: $plains_dir"
 
 #gene inserted
 perl ${scriptpath}/stat_gene.pl ${plains_dir}/placed_loci.txt $gff_file $workpath/ins_gene_body.txt 
-perl ${scriptpath}/stat_upstream.pl ${plains_dir}/placed_loci.txt $gff_file $workpath/ins_gene_upstream.txt
+perl ${scriptpath}/stat_upstream.pl ${plains_dir}/placed_loci.txt $gff_file $upstream_len $workpath/ins_gene_upstream.txt
 python ${scriptpath}/get_genelist.py $workpath/ins_gene_body.txt |sort -u >${plains_dir}/ins_gene.txt
 python ${scriptpath}/get_genelist.py $workpath/ins_gene_upstream.txt |sort -u>${plains_dir}/upstream_gene.txt
 
