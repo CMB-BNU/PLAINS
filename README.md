@@ -67,9 +67,6 @@ BiocManager::install("clusterProfiler")
 
 ```bash
 git clone https://github.com/CMB-BNU/PLAINS.git
-echo "alias plains.sh=Path_to_PLAINS/PLAINS/bin/plains.sh" >> ~/.bashrc
-echo "alias plains_function.sh=Path_to_PLAINS/PLAINS/bin/plains_function.sh" >> ~/.bashrc
-source ~/.bashrc
 ```
 
 ## Running
@@ -147,4 +144,5 @@ If this file was provided, PLAINS will try to find unique insertions for each po
 5. go:&emsp;Directory contains GO enrichment results
 6. pop:&emsp;Directory contains results of functional effects analysis for unique and shared insertions
 ## Citation
-Please cite:
+Please cite: 
+Chen, Y., Miao, Y., Bai, W. et al. Characteristics and potential functional effects of long insertions in Asian butternuts. BMC Genomics 23, 732 (2022). https://doi.org/10.1186/s12864-022-08961-3

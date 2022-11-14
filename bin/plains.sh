@@ -56,7 +56,7 @@ echo "configure file in: $scriptpath/../configure"
 
 #parameters
 Usage (){
-	echo -e "\n\t\tUsage:  bin/plains.sh [-h] [-t] [-r] [-b] [-s] [-o]\n"
+	echo -e "\n\t\tUsage:  plains.sh [-h] [-t] [-r] [-b] [-s] [-o]\n"
 	echo -e "\t\t\t-h: Print help message"
 	echo -e "\t\t\t-t: Number of threads [Default 8]"
 	echo -e "\t\t\t-r: Reference genome, needs to be indexed by bwa and samtools"
