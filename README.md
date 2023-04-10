@@ -1,4 +1,5 @@
-# PLAINS: Pangenome-level assembly and analysis of long Insertions. A streamlined, comprehensive pipeline for prediction and analysis of long insertions using whole-genome resequencing
+# PLAINS
+Pangenome-level assembly and analysis of long Insertions. A streamlined, comprehensive pipeline for prediction and analysis of long insertions using whole-genome resequencing
 
 ## Dependencies
 You can configure softwares in PLAINS/configure or add them to $PATH
